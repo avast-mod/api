@@ -1,0 +1,18 @@
+# AVaSt API. A library mod: other mods extend res://avast/api/mod.gd.
+id = "avast_api"
+
+[meta]
+name = "AVaSt API"
+version = "0.1.0-beta"
+authors = ["malidev"]
+description = "Modding API for Antivirus Survivors 2003 Professional."
+website = "https://github.com/avast-mod/api"
+
+[avast]
+categories = ["libraries"]
+tags = ["avast", "library"]
+links = { source = "https://github.com/avast-mod/api", docs = "https://github.com/avast-mod/docs" }
+
+[avast.update]
+github = "avast-mod/api"
+asset = "avast_api.zip"
