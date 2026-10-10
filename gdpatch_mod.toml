@@ -1,0 +1,27 @@
+# AVaSt API. A library mod: other mods extend res://avast/api/mod.gd.
+id = "avast_api"
+
+[meta]
+name = "AVaSt API"
+version = "0.1.1-beta"
+authors = ["malidev"]
+description = "Modding API for Antivirus Survivors 2003 Professional."
+website = "https://github.com/avast-mod/api"
+
+[avast]
+categories = ["libraries"]
+tags = ["avast", "library"]
+links = { source = "https://github.com/avast-mod/api", docs = "https://github.com/avast-mod/docs" }
+
+[avast.update]
+github = "avast-mod/api"
+asset = "avast_api.zip"
+
+[config.developer]
+meta.description = "For mod makers"
+
+[config.developer.components]
+name = "Components"
+description = "Opens a window with every component windows.form() can show, sorted into tabs, with all their options."
+widget = "button"
+hidden = true

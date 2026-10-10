@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Check versions
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          grep -q "^version = \"$VERSION\"" gdpatch_mod.toml || { echo "::error::gdpatch_mod.toml version is not $VERSION"; exit 1; }
+          grep -q "API_VERSION := \"$VERSION\"" data/avast/api/mod.gd || { echo "::error::API_VERSION in mod.gd is not $VERSION"; exit 1; }
+
+      - name: Package
+        run: |
+          mkdir -p dist/avast_api
+          cp -r gdpatch_mod.toml data icon.png README.md dist/avast_api/
+          (cd dist && zip -qr ../avast_api.zip avast_api)
+
+      # Not marked as a pre-release on purpose: installers download releases/latest,
+      # which skips pre-releases.
+      - uses: softprops/action-gh-release@v3
+        with:
+          files: |
+            avast_api.zip
