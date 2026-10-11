@@ -1,0 +1,8 @@
+*.kate-swp
+*.swp
+*~
+.DS_Store
+
+# Kept locally, not published
+examples/
+tests/
